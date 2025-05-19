@@ -188,6 +188,30 @@ of our [docker images](/app/continuous-integration/overview#Cypress-Docker-Image
 By default, we will launch Firefox headlessly during `cypress run`. To run
 Firefox headed, you can pass the `--headed` argument to `cypress run`.
 
+##### Mozilla geckodriver
+
+Cypress requires the
+[Mozilla geckodriver](https://github.com/mozilla/geckodriver) to launch Firefox.
+To meet this requirement, the Cypress binary uses the separate npm wrapper package
+[geckodriver](https://github.com/webdriverio-community/node-geckodriver)
+to download the latest Mozilla geckodriver, if it does not find a local cached copy.
+
+:::info
+
+Retrieving the driver may fail if you are operating Cypress in an air-gapped environment without Internet connectivity.
+
+To test with Firefox in this case, select a
+[Cypress Docker image](/app/continuous-integration/overview#Cypress-Docker-Images) including browsers.
+Newer versions of these images have the Mozilla geckodriver pre-installed.
+
+If you need to work without Docker, download the driver from the
+[Mozilla geckodriver releases](https://github.com/mozilla/geckodriver/releases) location,
+and then refer to the npm wrapper package
+[geckodriver](https://github.com/webdriverio-community/node-geckodriver) documentation for information
+about how to define a custom path for the driver or how to refer to a local CDN mirror site.
+
+:::
+
 ##### Webdriver BiDi and CDP Deprecation
 
 :::info
